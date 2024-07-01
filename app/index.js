@@ -15,8 +15,10 @@ const mortgageAmountController = {
     wrapperElement: document.querySelector(".textbox.mortgage-amount"),
     inputElement: document.querySelector(".textbox.mortgage-amount input"),
     messageElement: document.querySelector(".textbox.mortgage-amount .error-msg"),
+    decimals: "",
+    integers: "",
     getValue() {
-        return parseFloat(this.inputElement.value);
+        return parseFloat(this.inputElement.value.replace(/\,/g, ""));
     },
     clearInput() {
         this.inputElement.value = "";
@@ -32,16 +34,59 @@ const mortgageAmountController = {
 
     /// events
     handleInputEvent(e) {
-        let displayValue = "";
-        let count = 0;
-        let limit = 10;
+        if (e.target.value.length > 15) e.target.value = "";
+        const str = e.target.value;
 
-        for (let i = 0; i < e.target.value.length; i++) {
-            const c = e.target.value[i];
+        let dotIndex = helper.findFirstApeearance(e.target.value, ".");
+        let integers = "";
+        let decimals = "";
 
-            if (!helper.isDigit(c) || count == limit) break;
-            displayValue += c;
+        let cursorAt = this.inputElement.selectionStart;
+
+        for (let i = 0; i < str.length; i++) {
+            if (helper.isDigit(str[i])) {
+                integers += str[i];
+            }
+            if (integers.length == 12 || str[i] == ".") break;
         }
+
+        if (dotIndex != undefined) {
+            decimals = ".";
+            for (let i = dotIndex + 1; i < str.length; i++) {
+                if (helper.isDigit(str[i])) {
+                    decimals += str[i];
+                }
+                if (decimals.length == 3) break;
+            }
+        }
+
+        console.log(this.integers, integers);
+        console.log(this.decimals, decimals);
+
+        if (integers.length > 9) {
+            integers = "999999999";
+            decimals = "";
+        } else if (integers == "" && decimals != "") {
+            integers = "0";
+        }
+
+        const addedComma =
+            (this.integers.length == 3 && integers.length == 4) ||
+            (this.integers.length == 6 && integers.length == 7);
+        const addedFraction = this.decimals == "" && decimals != "";
+        const removedComma =
+            (this.integers.length == 4 && integers.length == 3) ||
+            (this.integers.length == 7 && integers.length == 6);
+        if (addedFraction || addedComma) {
+            cursorAt++;
+        } else if (removedComma) {
+            cursorAt--;
+        }
+
+        e.target.value = (integers != "" ? Number(integers).toLocaleString() : "") + decimals;
+        this.integers = integers;
+        this.decimals = decimals;
+        this.inputElement.setSelectionRange(cursorAt, cursorAt);
     },
     handleFocusEvent(e) {
         this.messageElement.textContent = "";
@@ -63,19 +108,6 @@ const mortgageTermController = {
     clearInput() {
         this.inputElement.value = "";
     },
-
-    /// events
-    handleInputEvent(e) {
-        let displayValue = "";
-        let count = 0;
-        let limit = 4;
-        for (let i = 0; i < e.target.value.length; i++) {
-            const c = e.target.value[i];
-            if (!helper.isDigit(c) || count == limit) break;
-            displayValue += c;
-        }
-        e.target.value = parseInt(displayValue) > 999 ? "999" : displayValue;
-    },
     checkEmpty() {
         if (this.inputElement.value == "") {
             this.wrapperElement.classList.add("error");
@@ -83,6 +115,18 @@ const mortgageTermController = {
             return true;
         }
         return false;
+    },
+
+    /// events
+    handleInputEvent(e) {
+        if (e.target.value.length > 3) e.target.value = "";
+        let displayValue = "";
+        for (let i = 0; i < e.target.value.length; i++) {
+            const c = e.target.value[i];
+            if (helper.isDigit(c)) displayValue += c;
+            if (displayValue.length == 3) break;
+        }
+        e.target.value = parseInt(displayValue) > 99 ? "99" : displayValue;
     },
     handleFocusEvent(e) {
         this.messageElement.textContent = "";
@@ -98,17 +142,13 @@ const interestRateController = {
     wrapperElement: document.querySelector(".textbox.interest-rate"),
     inputElement: document.querySelector(".textbox.interest-rate input"),
     messageElement: document.querySelector(".textbox.interest-rate .error-msg"),
-    integers: "",
     decimals: "",
-    cursorIndex: 0,
+    integers: "",
     getValue() {
         return parseFloat(this.inputElement.value) / 100;
     },
     clearInput() {
         this.inputElement.value = "";
-    },
-    resetCursor() {
-        this.inputElement.setSelectionRange(this.cursorIndex, this.cursorIndex);
     },
     checkEmpty() {
         if (this.inputElement.value == "") {
@@ -121,7 +161,7 @@ const interestRateController = {
 
     /// events
     handleInputEvent(e) {
-        if (e.target.value.length > 10) e.target.value = "";
+        if (e.target.value.length > 7) e.target.value = "";
         const str = e.target.value;
 
         let dotIndex = helper.findFirstApeearance(e.target.value, ".");
@@ -146,8 +186,7 @@ const interestRateController = {
         }
 
         if (integers.length > 2) {
-            const prev = this.integers + this.decimals.slice(1, 5);
-            if (this.decimals != "" && integers == prev) {
+            if (this.decimals != "" && integers == this.integers + this.decimals.slice(1, 5)) {
                 integers = this.integers;
                 decimals = "";
             } else {
@@ -158,7 +197,7 @@ const interestRateController = {
             integers = "0";
         }
 
-        e.target.value = Number(integers) + decimals;
+        e.target.value = (integers != "" ? Number(integers) : integers) + decimals;
         this.integers = integers;
         this.decimals = decimals;
     },
@@ -196,7 +235,6 @@ const mortgageTypeController = {
         this.wrapperElement.classList.remove("error");
     },
     init() {
-        console.log(this.optionElements);
         this.optionElements.forEach((el) =>
             el.addEventListener("focus", (e) => this.handleFocusEvent(e))
         );
@@ -235,25 +273,26 @@ const repaymentCaculatorController = {
         ];
 
         if (check.some((v) => v)) return;
-
         const res = this.calculateRepayment();
+
         document.querySelector(".result-empty").style.display = "none";
         document.querySelector(".result-shown").style.display = "block";
         document.querySelector(".repayment-wrapper .monthly .value").innerHTML =
-            "&#163;" + res[0].toFixed(2);
+            "&#163;" +
+            res[0].toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+            });
         document.querySelector(".repayment-wrapper .termly .value").innerHTML =
-            "&#163;" + res[1].toFixed(2);
-    },
-    handleKeydownEvent(e) {
-        if (e.key == "Enter") {
-            e.preventDefault();
-            return false;
-        }
+            "&#163;" +
+            res[1].toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+            });
     },
     init() {
         this.clearButton.addEventListener("click", () => this.clearAll());
         this.formElement.addEventListener("submit", (e) => this.handleSubmitEvent(e));
-        this.formElement.addEventListener("keydown", (e) => this.handleKeydownEvent(e));
     },
 };
 
