@@ -1,0 +1,426 @@
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("./assets/fonts/PlusJakartaSans-VariableFont_wght.ttf");
+}
+:root {
+  --clr-lime-700: hsl(61, 70%, 52%);
+  --clr-lime-100: hsla(61, 70%, 52%, 15%);
+  --clr-lime-500: hsla(61, 70%, 52%, 50%);
+  --clr-red: hsl(4, 69%, 50%);
+  --clr-white: hsl(0, 0%, 100%);
+
+  --clr-slate-100: hsl(202, 86%, 94%);
+  --clr-slate-300: hsl(203, 41%, 72%);
+  --clr-slate-500: hsl(200, 26%, 54%);
+  --clr-slate-700: hsl(200, 24%, 40%);
+  --clr-slate-900: hsl(202, 55%, 16%);
+  --clr-black-pearl: hsl(202, 56%, 12%);
+
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  --fs-body: 1rem;
+  --fs-body-m: 1.125rem;
+  --fs-heading: 1.5rem;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+body {
+  line-height: 1;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-medium);
+  background-color: var(--clr-slate-100);
+}
+
+#submit-btn {
+  width: 100%;
+  margin-top: 1.5rem;
+  border-radius: 9999px;
+  outline: none;
+  background-color: var(--clr-lime-700);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: var(--fs-body-m);
+  font-weight: var(--fw-bold);
+  color: var(--clr-slate-900);
+  padding: 1rem 0;
+  transition: background-color 200ms ease;
+}
+#submit-btn span {
+  margin: 0.0625rem 0.125rem 0 0.75rem;
+}
+#submit-btn:focus {
+  outline: 1px solid var(--clr-slate-700);
+}
+#clear-btn {
+  text-decoration: underline;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+  transition: color 200ms ease;
+}
+.card-wrapper {
+  background-color: var(--clr-white);
+}
+.calculator-wrapper {
+  padding: 2.1875rem 1.5rem 2rem 1.5rem;
+  color: var(--clr-slate-700);
+}
+.heading-wrapper {
+  margin-bottom: 2rem;
+}
+.heading-wrapper h1 {
+  font-size: var(--fs-heading);
+  font-weight: var(--fw-bold);
+  color: var(--clr-slate-900);
+  margin-bottom: 1rem;
+}
+.form-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem 1.5rem;
+}
+.textbox {
+  grid-column: 1 / -1;
+}
+.textbox .input-wrapper {
+  display: block;
+  position: relative;
+  display: flex;
+  font-size: var(--fs-body-m);
+  font-weight: var(--fw-bold);
+  margin-top: 0.9375rem;
+}
+
+.textbox .prepend,
+.textbox .append {
+  transition: background-color 200ms ease;
+  pointer-events: none;
+  background-color: var(--clr-slate-100);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+.textbox input {
+  border: none;
+  outline: 0;
+  width: 100%;
+  padding: 0.8125rem 1rem 0.8125rem 1rem;
+  color: var(--clr-slate-900);
+}
+.textbox .prepend {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+.textbox .append {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+.textbox .border {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  outline: 1px solid var(--clr-slate-500);
+  border-radius: 0.25rem;
+  transition: outline-color 200ms ease;
+}
+.mortgage-type-wrapper .error-msg,
+.textbox .error-msg {
+  margin-top: 1rem;
+  display: none;
+  color: var(--clr-red);
+  font-size: 0.875rem;
+}
+.textbox input:focus + .border {
+  outline-color: var(--clr-lime-700);
+}
+.textbox input:focus + .border + span {
+  background-color: var(--clr-lime-700);
+}
+.textbox.error .border {
+  outline-color: var(--clr-red);
+}
+.textbox.error .border + span {
+  background-color: var(--clr-red);
+  color: var(--clr-white);
+}
+.mortgage-type-wrapper.error .error-msg,
+.textbox.error .error-msg {
+  display: block;
+}
+.textbox.mortgage-amount .input-wrapper {
+  flex-direction: row-reverse;
+}
+.mortgage-type-wrapper {
+  grid-column: 1 / -1;
+}
+.mortgage-type-wrapper > fieldset {
+  outline: none;
+  border: none;
+  padding: 0;
+}
+.mortgage-type-wrapper legend {
+  margin-left: -0.0625rem;
+  margin-bottom: 0.25rem;
+}
+.radiobox {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-top: 0.75rem;
+  width: 100%;
+  padding: 0.875rem 0 0.875rem 1.125rem;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-body-m);
+  color: var(--clr-slate-900);
+}
+.radiobox input {
+  position: absolute;
+  z-index: -999;
+}
+.radiobox .outer-circle {
+  z-index: 100;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 9999px;
+  border: 2px solid var(--clr-slate-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 200ms ease;
+}
+.radiobox .inner-circle {
+  opacity: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: inherit;
+  background-color: var(--clr-lime-700);
+  transition: background-color 200ms ease;
+}
+.radiobox .title {
+  z-index: 100;
+  margin-left: 1.125rem;
+}
+.radiobox .border {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0.25rem;
+  outline: 1px solid var(--clr-slate-900);
+  transition: outline 200ms ease;
+}
+.radiobox input:checked + .outer-circle {
+  border-color: var(--clr-lime-700);
+}
+.radiobox input:checked + .outer-circle .inner-circle {
+  opacity: 1;
+}
+.radiobox input:checked + .outer-circle + .title + .border {
+  outline-color: var(--clr-lime-700);
+  background-color: var(--clr-lime-100);
+}
+.radiobox input:focus + .outer-circle + .title + .border {
+  outline-color: var(--clr-lime-700);
+}
+.result-wrapper {
+  background-color: var(--clr-slate-900);
+  color: var(--clr-slate-500);
+  padding: 2rem 1.5rem;
+}
+.result-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+.result-shown {
+  display: none;
+}
+.result-empty .title {
+  color: var(--clr-white);
+  margin: 1.1875rem 0;
+}
+.result-empty .description {
+  line-height: 1.5;
+}
+.result-shown .title {
+  color: var(--clr-white);
+  margin-bottom: 1.1875rem;
+  margin-top: 0.1875rem;
+}
+.result-shown > .description {
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+.repayment-wrapper {
+  background-color: var(--clr-lime-700);
+  padding-top: 0.25rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.repayment-wrapper > div {
+  background-color: var(--clr-black-pearl);
+  padding: 1.5rem 1rem;
+  border-radius: 0.375rem 0.375rem 0 0;
+  width: 100%;
+}
+.repayment-wrapper .divider {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: var(--clr-slate-700);
+  margin: 1.3125rem 0 1.25rem 0;
+}
+.repayment-wrapper .monthly .description {
+  display: block;
+  margin-bottom: 1.0625rem;
+}
+.repayment-wrapper .monthly .value {
+  font-size: 2.5rem;
+  font-weight: var(--fw-bold);
+  color: var(--clr-lime-700);
+}
+.repayment-wrapper .termly .description {
+  display: block;
+  margin-bottom: 0.9375rem;
+}
+.repayment-wrapper .termly .value {
+  display: block;
+  font-size: var(--fs-heading);
+  font-weight: var(--fw-bold);
+  color: var(--clr-white);
+  margin-bottom: 0.1875rem;
+}
+@media (hover: hover) {
+  #clear-btn:hover {
+    color: var(--clr-slate-900);
+  }
+
+  #submit-btn:hover {
+    background-color: var(--clr-lime-500);
+  }
+
+  .radiobox:hover .border {
+    outline-color: var(--clr-lime-700);
+  }
+  .textbox:hover .border {
+    outline-color: var(--clr-slate-900);
+  }
+}
+@media screen and (min-width: 40em) {
+  main {
+    display: flex;
+    justify-content: center;
+  }
+  .card-wrapper {
+    overflow: hidden;
+    border-radius: 1.5rem;
+    margin: 2.5rem 0;
+    width: clamp(36rem, 100vw - 5rem, 63rem);
+    box-shadow: -10px 20px 50px -6px rgba(0, 0, 0, 0.1);
+  }
+  .heading-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+  .heading-wrapper h1 {
+    margin: 0;
+  }
+  .calculator-wrapper {
+    padding: 2.6875rem 2.5rem 2.5rem 2.5rem;
+  }
+  .result-wrapper {
+    padding: 2.5rem;
+  }
+  .textbox.mortgage-term {
+    grid-column: 1 / 2;
+  }
+  .textbox.interest-rate {
+    grid-column: 2 / -1;
+  }
+
+  #submit-btn {
+    margin-top: 2.4375rem;
+    padding: 1rem 2.4375rem 1rem 2.5rem;
+    width: initial;
+  }
+
+  .repayment-wrapper > div {
+    padding: 2rem;
+  }
+  .repayment-wrapper .monthly .description {
+    margin-bottom: 1.25rem;
+  }
+  .repayment-wrapper .monthly .value {
+    font-size: 3.5rem;
+  }
+  .result-shown > .description {
+    margin-bottom: 2.5rem;
+  }
+  .repayment-wrapper .divider {
+    margin: 2.375rem 0 2.3125rem 0;
+  }
+}
+
+@media screen and (min-width: 68em) {
+  .card-wrapper {
+    display: flex;
+    margin: 13.0625rem 0;
+  }
+  .calculator-wrapper {
+    width: 50%;
+  }
+  .result-wrapper {
+    width: 50%;
+    border-bottom-left-radius: 5rem;
+  }
+}
