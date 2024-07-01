@@ -23,7 +23,7 @@ Users should be able to:
   - Input automatically adding commas to numbers
   - Input enforce maximum value when overflow
 
-:link: [`Solution Link`]() :link: [`Live Site Link`]()
+:link: [`Solution Link`](https://www.frontendmentor.io/solutions/only-html-and-css-and-js-GxW6jsFYii) :link: [`Live Site Link`](https://haquanq.github.io/fm-mortgage-repayment-calculator/)
 
 ![](./.docs/design/desktop-design-empty.jpg)
 
