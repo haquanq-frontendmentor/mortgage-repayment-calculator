@@ -1,5 +1,0 @@
-overrides:
-  - files: ["*.js"]
-    options:
-      printWidth: 100
-      tabWidth: 4
