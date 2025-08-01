@@ -1,13 +1,15 @@
 {
-  "name": "fm-mortage-repayment-calculator",
+  "name": "mortage-repayment-calculator",
   "description": "Solution for frontendmentor.io challenge: mortage-repayment-calculator",
-  "devDependencies": {
-    "browser-sync": "^3.0.2"
-  },
-  "scripts": {
-    "dev": "browser-sync start -s app -f app --no-ui"
-  },
-  "type": "module",
   "author": "haquanq",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite serve --port 5000",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5",
+    "typescript": "^5.8.3"
+  }
 }
