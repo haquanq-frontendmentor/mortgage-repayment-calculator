@@ -18,7 +18,7 @@ const mortgageAmountController = {
     decimals: "",
     integers: "",
     getValue() {
-        return parseFloat(this.inputElement.value.replace(/\,/g, ""));
+        return parseFloat(this.inputElement.value.replace(/[,]/g, ""));
     },
     clearInput() {
         this.inputElement.value = "";
@@ -71,12 +71,10 @@ const mortgageAmountController = {
         }
 
         const addedComma =
-            (this.integers.length == 3 && integers.length == 4) ||
-            (this.integers.length == 6 && integers.length == 7);
+            (this.integers.length == 3 && integers.length == 4) || (this.integers.length == 6 && integers.length == 7);
         const addedFraction = this.decimals == "" && decimals != "";
         const removedComma =
-            (this.integers.length == 4 && integers.length == 3) ||
-            (this.integers.length == 7 && integers.length == 6);
+            (this.integers.length == 4 && integers.length == 3) || (this.integers.length == 7 && integers.length == 6);
         if (addedFraction || addedComma) {
             cursorAt++;
         } else if (removedComma) {
@@ -88,7 +86,7 @@ const mortgageAmountController = {
         this.decimals = decimals;
         this.inputElement.setSelectionRange(cursorAt, cursorAt);
     },
-    handleFocusEvent(e) {
+    handleFocusEvent() {
         this.messageElement.textContent = "";
         this.wrapperElement.classList.remove("error");
     },
@@ -128,7 +126,7 @@ const mortgageTermController = {
         }
         e.target.value = parseInt(displayValue) > 99 ? "99" : displayValue;
     },
-    handleFocusEvent(e) {
+    handleFocusEvent() {
         this.messageElement.textContent = "";
         this.wrapperElement.classList.remove("error");
     },
@@ -201,7 +199,7 @@ const interestRateController = {
         this.integers = integers;
         this.decimals = decimals;
     },
-    handleFocusEvent(e) {
+    handleFocusEvent() {
         this.messageElement.textContent = "";
         this.wrapperElement.classList.remove("error");
     },
@@ -230,14 +228,12 @@ const mortgageTypeController = {
     },
 
     /// events
-    handleFocusEvent(e) {
+    handleFocusEvent() {
         this.messageElement.textContent = "";
         this.wrapperElement.classList.remove("error");
     },
     init() {
-        this.optionElements.forEach((el) =>
-            el.addEventListener("focus", (e) => this.handleFocusEvent(e))
-        );
+        this.optionElements.forEach((el) => el.addEventListener("focus", (e) => this.handleFocusEvent(e)));
     },
 };
 
