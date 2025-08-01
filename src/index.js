@@ -12,9 +12,9 @@ const inputErrorMessages = {
 };
 
 const mortgageAmountController = {
-    wrapperElement: document.querySelector(".textbox.mortgage-amount"),
-    inputElement: document.querySelector(".textbox.mortgage-amount input"),
-    messageElement: document.querySelector(".textbox.mortgage-amount .error-msg"),
+    wrapperElement: document.querySelector("#mortgage-amount"),
+    inputElement: document.querySelector("#mortgage-amount-input"),
+    messageElement: document.querySelector("#mortgage-amount-input-hint"),
     decimals: "",
     integers: "",
     getValue() {
@@ -97,9 +97,9 @@ const mortgageAmountController = {
 };
 
 const mortgageTermController = {
-    wrapperElement: document.querySelector(".textbox.mortgage-term"),
-    messageElement: document.querySelector(".textbox.mortgage-term .error-msg"),
-    inputElement: document.querySelector(".textbox.mortgage-term input"),
+    wrapperElement: document.querySelector("#mortgage-term"),
+    messageElement: document.querySelector("#mortgage-term-input-hint"),
+    inputElement: document.querySelector("#mortgage-term-input"),
     getValue() {
         return parseInt(this.inputElement.value);
     },
@@ -137,9 +137,9 @@ const mortgageTermController = {
 };
 
 const interestRateController = {
-    wrapperElement: document.querySelector(".textbox.interest-rate"),
-    inputElement: document.querySelector(".textbox.interest-rate input"),
-    messageElement: document.querySelector(".textbox.interest-rate .error-msg"),
+    wrapperElement: document.querySelector("#mortgage-interest-rate"),
+    inputElement: document.querySelector("#mortgage-interest-rate-input"),
+    messageElement: document.querySelector("#mortgage-interest-rate-input-hint"),
     decimals: "",
     integers: "",
     getValue() {
