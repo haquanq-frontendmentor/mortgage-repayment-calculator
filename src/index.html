@@ -1,16 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- displays site properly based on user's device -->
 
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./assets/images/favicon-32x32.png"
-    />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
     <link rel="stylesheet" href="./main.css" />
     <title>Frontend Mentor | Mortgage repayment calculator</title>
   </head>
@@ -20,13 +15,13 @@
         <section class="calculator-wrapper">
           <div class="heading-wrapper">
             <h1>Mortgage Calculator</h1>
-            <button tabindex="7" id="clear-btn">Clear All</button>
+            <button id="clear-btn">Clear All</button>
           </div>
           <form id="calculator-form" class="form-wrapper">
             <label class="textbox mortgage-amount">
               <span class="label">Mortgage Amount</span>
               <span class="input-wrapper">
-                <input type="text" tabindex="1" />
+                <input type="text" />
                 <span class="border"></span>
                 <span class="prepend">&#163;</span>
               </span>
@@ -35,7 +30,7 @@
             <label class="textbox mortgage-term">
               <span class="label">Mortgage Term</span>
               <span class="input-wrapper">
-                <input type="text" tabindex="2" />
+                <input type="text" />
                 <span class="border"></span>
                 <span class="append">years</span>
               </span>
@@ -44,7 +39,7 @@
             <label class="textbox interest-rate">
               <span class="label">Interest Rate</span>
               <span class="input-wrapper">
-                <input type="text" tabindex="3" />
+                <input type="text" />
                 <span class="border"></span>
                 <span class="append">%</span>
               </span>
@@ -54,18 +49,14 @@
               <fieldset>
                 <legend>Mortgage Type</legend>
                 <label class="radiobox mortgage-repayment">
-                  <input name="mortgage-type" type="radio" tabindex="4" />
-                  <span class="outer-circle"
-                    ><span class="inner-circle"></span
-                  ></span>
+                  <input name="mortgage-type" type="radio" />
+                  <span class="outer-circle"><span class="inner-circle"></span></span>
                   <span class="title">Repayment</span>
                   <span class="border"></span>
                 </label>
                 <label class="radiobox mortgage-interest">
-                  <input name="mortgage-type" type="radio" tabindex="5" />
-                  <span class="outer-circle"
-                    ><span class="inner-circle"></span
-                  ></span>
+                  <input name="mortgage-type" type="radio" />
+                  <span class="outer-circle"><span class="inner-circle"></span></span>
                   <span class="title">Interest Only</span>
                   <span class="border"></span>
                 </label>
@@ -73,37 +64,24 @@
               <span class="error-msg"></span>
             </div>
           </form>
-          <button
-            form="calculator-form"
-            id="submit-btn"
-            type="submit"
-            tabindex="6"
-          >
-            <img
-              src="./assets/images/icon-calculator.svg"
-              alt="Calculator icon"
-            />
+          <button form="calculator-form" id="submit-btn" type="submit">
+            <img src="./assets/images/icon-calculator.svg" alt="Calculator icon" />
             <span>Calculate Repayments</span>
           </button>
         </section>
         <section class="result-wrapper">
           <article class="result-empty">
-            <img
-              src="./assets/images/illustration-empty.svg"
-              alt="Empty illustration"
-            />
+            <img src="./assets/images/illustration-empty.svg" alt="Empty illustration" />
             <h2 class="title">Results shown here</h2>
             <p class="description">
-              Complete the form and click “calculate repayments” to see what
-              your monthly repayments would be.
+              Complete the form and click “calculate repayments” to see what your monthly repayments would be.
             </p>
           </article>
           <article class="result-shown">
             <h2 class="title">Your results</h2>
             <p class="description">
-              Your results are shown below based on the information you
-              provided. To adjust the results, edit the form and click
-              “calculate repayments” again.
+              Your results are shown below based on the information you provided. To adjust the results, edit the form
+              and click “calculate repayments” again.
             </p>
             <div class="repayment-wrapper">
               <div>
@@ -113,9 +91,7 @@
                 </p>
                 <span class="divider"></span>
                 <p class="termly">
-                  <span class="description"
-                    >Total you'll repay over the term</span
-                  >
+                  <span class="description">Total you'll repay over the term</span>
                   <span class="value">&#163;539,322.94</span>
                 </p>
               </div>
