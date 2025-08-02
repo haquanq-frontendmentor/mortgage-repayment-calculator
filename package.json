@@ -33,7 +33,6 @@
     "lint-staged": "^16.1.2",
     "postcss-custom-media": "^11.0.6",
     "postcss-import": "^16.1.1",
-    "postcss-load-config": "^6.0.1",
     "postcss-nested": "^7.0.2",
     "postcss-preset-env": "^10.2.3",
     "postcss-sort-media-queries": "^5.2.0",
