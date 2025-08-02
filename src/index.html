@@ -17,9 +17,9 @@
             <h1>Mortgage Calculator</h1>
             <button id="clear-btn">Clear All</button>
           </div>
-          <form id="calculator-form" class="form-wrapper">
+          <form id="calculator-form" class="form-wrapper" novalidate>
             <div class="text-field" id="mortgage-amount">
-              <label class="text-field__label" for="mortgage-amount-input">Mortgage Amount</label>
+              <label class="text-field__label" for="mortgage-amount-input" data-text-field-label>Mortgage Amount</label>
               <span class="text-field__input-wrapper">
                 <input
                   class="text-field__input"
@@ -27,14 +27,15 @@
                   type="text"
                   aria-invalid="false"
                   aria-describedby="mortgage-amount-input-hint"
+                  data-text-field-input=""
                 />
                 <span class="text-field__border"></span>
                 <span class="text-field__prepend">&#163;</span>
               </span>
-              <p class="text-field__error-msg" id="mortgage-amount-input-hint"></p>
+              <p class="text-field__error-msg" id="mortgage-amount-input-hint" data-text-field-hint></p>
             </div>
             <div class="text-field" id="mortgage-term">
-              <label class="text-field__label" for="mortgage-term-input">Mortgage Term</label>
+              <label class="text-field__label" for="mortgage-term-input" data-text-field-label>Mortgage Term</label>
               <span class="text-field__input-wrapper">
                 <input
                   class="text-field__input"
@@ -42,14 +43,17 @@
                   type="text"
                   aria-invalid="false"
                   aria-describedby="mortgage-term-input-hint"
+                  data-text-field-input=""
                 />
                 <span class="text-field__border"></span>
                 <span class="text-field__append">years</span>
               </span>
-              <p class="text-field__error-msg" id="mortgage-term-input-hint"></p>
+              <p class="text-field__error-msg" id="mortgage-term-input-hint" data-text-field-hint></p>
             </div>
             <div class="text-field" id="mortgage-interest-rate">
-              <label class="text-field__label" for="mortgage-interest-rate-input">Interest Rate</label>
+              <label class="text-field__label" for="mortgage-interest-rate-input" data-text-field-label>
+                Interest Rate
+              </label>
               <span class="text-field__input-wrapper">
                 <input
                   class="text-field__input"
@@ -57,12 +61,12 @@
                   type="text"
                   aria-invalid="false"
                   aria-describedby="mortgage-interest-rate-input-hint"
-                  text-field-input
+                  data-text-field-input=""
                 />
                 <span class="text-field__border"></span>
                 <span class="text-field__append">%</span>
               </span>
-              <p class="text-field__error-msg" id="mortgage-interest-rate-input-hint"></p>
+              <p class="text-field__error-msg" id="mortgage-interest-rate-input-hint" data-text-field-hint></p>
             </div>
             <div class="mortgage-type-wrapper">
               <fieldset>
@@ -119,6 +123,6 @@
         </section>
       </div>
     </main>
-    <script src="./index.js"></script>
+    <script src="./index.ts"></script>
   </body>
 </html>
