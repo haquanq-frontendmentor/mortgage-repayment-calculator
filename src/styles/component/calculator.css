@@ -1,0 +1,144 @@
+.calculator {
+    background-color: var(--color-white);
+
+    @media (--tablet) {
+        overflow: hidden;
+        border-radius: var(--rounded-xl);
+        max-width: 63rem;
+        box-shadow: var(--shadow-sm);
+    }
+
+    @media (--laptop) {
+        display: flex;
+
+        > * {
+            width: 50%;
+        }
+    }
+
+    &__form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: calc(var(--space-base) * 6.75) calc(var(--space-base) * 6);
+        padding-block-start: calc(var(--space-base) * 8.75);
+        padding-block-end: calc(var(--space-base) * 8);
+        padding-inline: calc(var(--space-base) * 6);
+        color: var(--color-slate-700);
+
+        @media (--tablet) {
+            padding-block-start: calc(var(--space-base) * 10.75);
+            padding-block-end: calc(var(--space-base) * 10);
+            padding-inline: calc(var(--space-base) * 10);
+        }
+    }
+
+    &__form-hint {
+        position: absolute;
+        opacity: 0;
+        width: 0.1rem;
+        height: 0.1rem;
+    }
+
+    &__header {
+        margin-block-end: calc(var(--space-base) * 1.25);
+        grid-column: 1 / -1;
+
+        @media (--tablet) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-block-end: calc(var(--space-base) * 5);
+        }
+    }
+
+    &__title {
+        font-size: var(--text-lg);
+        font-weight: var(--font-bold);
+        color: var(--color-slate-900);
+        margin-block-end: calc(var(--space-base) * 4);
+
+        @media (--tablet) {
+            margin-block-end: 0;
+        }
+    }
+
+    &__reset-btn {
+        text-decoration: underline;
+        background-color: transparent;
+        cursor: pointer;
+        padding: 0;
+        border: 0;
+        transition-property: color;
+        transition-timing-function: ease;
+        transition-duration: 200ms;
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+
+    &__submit-btn {
+        grid-column: 1 / -1;
+        width: 100%;
+        border-radius: var(--rounded-full);
+        background-color: var(--color-lime-700);
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: var(--text-2md);
+        font-weight: var(--font-bold);
+        color: var(--color-slate-900);
+        padding-block: calc(var(--space-base) * 4);
+        padding-inline: 0;
+        transition-property: background-color, transform;
+        transition-timing-function: ease;
+        transition-duration: 200ms;
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+
+        &--icon {
+            margin-inline-start: calc(var(--space-base) * 3);
+            margin-inline-end: calc(var(--space-base) * 0.5);
+        }
+
+        @media (--tablet) {
+            margin-block-start: calc(var(--space-base) * 3);
+            padding-block: calc(var(--space-base) * 4);
+            padding-inline-start: calc(var(--space-base) * 10);
+            padding-inline-end: calc(var(--space-base) * 9.75);
+            width: initial;
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--color-lime-500);
+            }
+        }
+    }
+
+    &__mortgage-amount,
+    &__mortgage-term,
+    &__mortgage-type,
+    &__mortgage-interest-rate {
+        grid-column: 1 / -1;
+    }
+
+    @media (--tablet) {
+        &__mortgage-term,
+        &__mortgage-interest-rate {
+            grid-column: initial;
+        }
+    }
+}

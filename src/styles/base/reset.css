@@ -1,0 +1,55 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    line-height: var(--leading-none);
+    font-family: var(--font-main);
+    font-size: var(--text-md);
+    font-weight: var(--font-medium);
+    background-color: var(--color-slate-100);
+    min-height: 100vh;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+@supports selector(:focus-visible) {
+    button:focus {
+        outline: none;
+    }
+
+    button:focus-visible {
+        outline-offset: var(--focus-outline-offset);
+        outline-style: var(--focus-outline-style);
+        outline-width: var(--focus-outline-width);
+        outline-color: var(--focus-outline-color);
+    }
+}

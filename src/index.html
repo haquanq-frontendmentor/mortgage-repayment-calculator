@@ -1,128 +1,136 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
 
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
-    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
     <title>Frontend Mentor | Mortgage repayment calculator</title>
   </head>
   <body>
-    <main>
-      <div class="card-wrapper">
-        <section class="calculator-wrapper">
-          <div class="heading-wrapper">
-            <h1>Mortgage Calculator</h1>
-            <button id="clear-btn">Clear All</button>
+    <main class="main">
+      <div class="calculator">
+        <form class="calculator__form" id="calculator-form" novalidate>
+          <div class="calculator__header">
+            <h1 class="calculator__title">Mortgage Calculator</h1>
+            <button class="calculator__reset-btn" id="clear-btn" type="reset">Clear All</button>
           </div>
-          <form id="calculator-form" class="form-wrapper" novalidate>
+          <div class="calculator__mortgage-amount">
             <div class="text-field" id="mortgage-amount">
-              <label class="text-field__label" for="mortgage-amount-input" data-text-field-label>Mortgage Amount</label>
+              <label class="text-field__label" for="mortgage-amount-input">
+                Mortgage Amount <span aria-hidden="true">*</span>
+              </label>
               <span class="text-field__input-wrapper">
                 <input
                   class="text-field__input"
                   id="mortgage-amount-input"
                   type="text"
+                  name="mortgage-amount"
                   aria-invalid="false"
                   aria-describedby="mortgage-amount-input-hint"
-                  data-text-field-input=""
                 />
-                <span class="text-field__border"></span>
-                <span class="text-field__prepend">&#163;</span>
+                <span class="text-field__overlay"></span>
+                <span class="text-field__adornment text-field__adornment--before" aria-hidden="true">&#163;</span>
               </span>
-              <p class="text-field__error-msg" id="mortgage-amount-input-hint" data-text-field-hint></p>
+              <p class="text-field__hint" id="mortgage-amount-input-hint"></p>
             </div>
+          </div>
+          <div class="calculator__mortgage-term">
             <div class="text-field" id="mortgage-term">
-              <label class="text-field__label" for="mortgage-term-input" data-text-field-label>Mortgage Term</label>
+              <label class="text-field__label" for="mortgage-term-input">
+                Mortgage Term <span aria-hidden="true">*</span>
+              </label>
               <span class="text-field__input-wrapper">
                 <input
                   class="text-field__input"
                   id="mortgage-term-input"
                   type="text"
+                  name="mortgage-term"
                   aria-invalid="false"
                   aria-describedby="mortgage-term-input-hint"
-                  data-text-field-input=""
                 />
-                <span class="text-field__border"></span>
-                <span class="text-field__append">years</span>
+                <span class="text-field__overlay"></span>
+                <span class="text-field__adornment text-field__adornment--after">years</span>
               </span>
-              <p class="text-field__error-msg" id="mortgage-term-input-hint" data-text-field-hint></p>
+              <p class="text-field__hint" id="mortgage-term-input-hint"></p>
             </div>
+          </div>
+          <div class="calculator__mortgage-interest-rate">
             <div class="text-field" id="mortgage-interest-rate">
-              <label class="text-field__label" for="mortgage-interest-rate-input" data-text-field-label>
-                Interest Rate
+              <label class="text-field__label" for="mortgage-interest-rate-input">
+                Interest Rate <span aria-hidden="true">*</span>
               </label>
               <span class="text-field__input-wrapper">
                 <input
                   class="text-field__input"
                   id="mortgage-interest-rate-input"
                   type="text"
+                  name="mortgage-interest-rate"
                   aria-invalid="false"
                   aria-describedby="mortgage-interest-rate-input-hint"
-                  data-text-field-input=""
                 />
-                <span class="text-field__border"></span>
-                <span class="text-field__append">%</span>
+                <span class="text-field__overlay"></span>
+                <span class="text-field__adornment text-field__adornment--after" aria-hidden="true">%</span>
               </span>
-              <p class="text-field__error-msg" id="mortgage-interest-rate-input-hint" data-text-field-hint></p>
+              <p class="text-field__hint" id="mortgage-interest-rate-input-hint"></p>
             </div>
-            <div class="mortgage-type-wrapper">
-              <fieldset>
-                <legend>Mortgage Type</legend>
-                <label class="radiobox mortgage-repayment">
-                  <input name="mortgage-type" type="radio" />
-                  <span class="outer-circle"><span class="inner-circle"></span></span>
-                  <span class="title">Repayment</span>
-                  <span class="border"></span>
+          </div>
+          <div class="calculator__mortgage-type">
+            <fieldset class="radio-field" id="mortgage-type">
+              <legend class="radio-field__title">Mortgage Type <span aria-hidden="true">*</span></legend>
+              <div class="radio-field__option-wrapper">
+                <label class="radio-field__option">
+                  <input class="radio-field__input" type="radio" name="mortgage-type" value="repayment" required />
+                  <span class="radio-field__circle"></span>
+                  <span class="radio-field__label">Repayment</span>
+                  <span class="radio-field__overlay"></span>
                 </label>
-                <label class="radiobox mortgage-interest">
-                  <input name="mortgage-type" type="radio" />
-                  <span class="outer-circle"><span class="inner-circle"></span></span>
-                  <span class="title">Interest Only</span>
-                  <span class="border"></span>
+                <label class="radio-field__option">
+                  <input class="radio-field__input" type="radio" name="mortgage-type" value="interest-only" />
+                  <span class="radio-field__circle"></span>
+                  <span class="radio-field__label">Interest Only</span>
+                  <span class="radio-field__overlay"></span>
                 </label>
-              </fieldset>
-              <span class="error-msg"></span>
-            </div>
-          </form>
-          <button form="calculator-form" id="submit-btn" type="submit">
-            <img src="./assets/images/icon-calculator.svg" alt="Calculator icon" />
-            <span>Calculate Repayments</span>
+              </div>
+              <p class="radio-field__hint"></p>
+            </fieldset>
+          </div>
+          <button class="calculator__submit-btn" form="calculator-form" id="submit-btn" type="submit">
+            <img class="calculator__submit-btn--icon" src="./assets/images/icon-calculator.svg" alt="" />
+            <span class="calculator__submit-btn--text">Calculate Repayments</span>
           </button>
-        </section>
-        <section class="result-wrapper">
-          <article class="result-empty">
-            <img src="./assets/images/illustration-empty.svg" alt="Empty illustration" />
-            <h2 class="title">Results shown here</h2>
-            <p class="description">
+          <p class="calculator__form-hint" id="calculator-form-hint" role="alert"></p>
+        </form>
+        <section class="result">
+          <article class="result__empty">
+            <img class="result__empty-image" src="./assets/images/illustration-empty.svg" alt="" />
+            <h2 class="result__empty-title">Results shown here</h2>
+            <p class="result__empty-description">
               Complete the form and click “calculate repayments” to see what your monthly repayments would be.
             </p>
           </article>
-          <article class="result-shown">
-            <h2 class="title">Your results</h2>
-            <p class="description">
+          <article class="result__content">
+            <h2 class="result__title">Your results</h2>
+            <p class="result__description">
               Your results are shown below based on the information you provided. To adjust the results, edit the form
               and click “calculate repayments” again.
             </p>
-            <div class="repayment-wrapper">
-              <div>
-                <p class="monthly">
-                  <span class="description">Your monthly repayments</span>
-                  <span class="value">&#163;1,797.74</span>
-                </p>
-                <span class="divider"></span>
-                <p class="termly">
-                  <span class="description">Total you'll repay over the term</span>
-                  <span class="value">&#163;539,322.94</span>
-                </p>
-              </div>
+            <div class="result__stats" aria-live="polite" aria-atomic="true">
+              <p class="result__monthly">
+                <span class="result__monthly--description">Your monthly repayments</span>
+                <span class="result__monthly--value"></span>
+              </p>
+              <span class="result__stats-divider"></span>
+              <p class="result__total">
+                <span class="result__total--description">Total you'll repay over the term</span>
+                <span class="result__total--value"></span>
+              </p>
             </div>
           </article>
         </section>
       </div>
     </main>
-    <script src="./index.ts"></script>
+    <script type="module" src="./app.ts"></script>
   </body>
 </html>

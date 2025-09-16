@@ -1,56 +1,98 @@
-## Frontend Mentor - Mortgage repayment calculator solution
+## Frontend Mentor - Mortgage Repayment Calculator Solution
 
 This is a solution to the [Mortgage repayment calculator challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/mortgage-repayment-calculator-Galx1LXK73).
 Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-### The challenge
+<p>
+  <a href="https://www.frontendmentor.io/solutions/only-html-and-css-and-js-GxW6jsFYii">
+    <img
+      alt="Solution post"
+      src="https://img.shields.io/badge/Frontendmentor-blue?label=Solution%20on"
+    /></a>
+  <a href="https://haquanq-frontendmentor.github.io/mortgage-repayment-calculator/">
+    <img
+      alt="Live demo"
+      src="https://img.shields.io/badge/Demo-teal?label=Live"
+    /></a>
+  <a href="./LICENSE"
+    ><img
+      allt="MIT License"
+      src="https://img.shields.io/badge/MIT-blue?label=license"
+  /></a>
+</p>
 
-- No access to design files, get as close to the design as possible :expressionless:
+## Table of Contents
 
-Users should be able to:
+- [Project Overview](#sunrise-project-overview)
+- [Tech Stack and Approach](#stars-tech-stack-and-approach)
+- [Local Development](#leaves-local-development)
+- [Deployment](#maple_leaf-deployment)
 
-- Input mortgage information and see monthly repayment and total repayment amounts after submitting the form :yum:
-- See form validation messages if any field is incomplete :yum:
-- Complete the form only using their keyboard :yum:
-- View the optimal layout for the interface depending on their device's screen size :yum:
-- See hover and focus states for all interactive elements on the page :yum:
+## :sunrise: Project Overview
 
-### Solution
+### Challenge Requirements
 
-- Built with: `HTML` `CSS` `JavaScript`
-- Mobile-first workflow
-- Additional features:
-  - Input automatically adding commas to numbers
-  - Input enforce maximum value when overflow
+- Input mortgage information and see monthly repayment and total repayment amounts after submitting the form
+- See form validation messages if any field is incomplete
+- Complete the form only using their keyboard
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
 
-:link: [`Solution Link`](https://www.frontendmentor.io/solutions/only-html-and-css-and-js-GxW6jsFYii) :link: [`Live Site Link`](https://haquanq.github.io/fm-mortgage-repayment-calculator/)
+### Status
 
-![](./.docs/design/desktop-design-empty.jpg)
+Features
 
-## Working in `fm-mortgage-repayment-calculator` repository
+- [x] Calculate mortgage replayment based on selected type
+- [x] Accessible form controls with keyboard navigation, validate on blur
 
-### Packages being used
+Accessibility
 
-- [`browser-sync`](https://github.com/BrowserSync/browser-sync)
+- [x] Responsive accross different screen sizes
+- [x] Interactive elements have clear focus indicator
 
-### Clone this project to your machine
+### Preview (Desktop)
 
-Make sure you have Git installed in your system, open new terminal, run the following command:
+![](./docs/design/desktop-design-empty.jpg)
+
+## :stars: Tech Stack and Approach
+
+### Built With
+
+- **HTML5** – Semantic structure
+- **CSS Grid & Flexbox** – Layout
+- **PostCSS** – Nested rules, custom media queries, future CSS features, minification
+- **Stylelint** – CSS linting, code style consistency
+- **TypeScript** - Interactivity and application logic
+- **Vite** - Fast development server, production build and easy configuration
+
+### Approach
+
+- Mobile-first workflow for better performance on smaller devices
+- Accessibility guided by [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/)
+
+## :leaves: Local Development
+
+### Prerequisites
+
+Install the following:
+
+- Git (latest LTS recommended)
+- Node.js (latest LTS recommended)
+
+### Setup
 
 ```
-git clone https://github.com/haquanq/fm-mortgage-repayment-calculator.git
-```
-
-Then, run `npm install` to install all dependencies.
-
-```
+git clone https://github.com/haquanq-frontendmentor/mortgage-repayment-calculator.git
+cd mortgage-repayment-calculator
 npm install
 ```
 
-### Development workflow
-
-In terminal, run `npm run dev` to start development server:
+### Start Development Server
 
 ```
 npm run dev
 ```
+
+## :maple_leaf: Deployment
+
+Deployed to Github Pages via Github Actions (manually triggered).

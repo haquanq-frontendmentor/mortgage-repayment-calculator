@@ -1,0 +1,101 @@
+.text-field {
+    &__input-wrapper {
+        position: relative;
+        display: flex;
+        font-size: var(--text-2md);
+        font-weight: var(--font-bold);
+        margin-block-start: calc(var(--space-base) * 3.75);
+        height: 3.125rem;
+    }
+
+    &__input {
+        border: none;
+        width: 100%;
+        padding-block: calc(var(--space-base) * 3.25);
+        padding-inline: calc(var(--space-base) * 4);
+        color: var(--color-slate-900);
+        order: 1;
+    }
+
+    &__adornment {
+        transition: background-color 200ms ease;
+        background-color: var(--color-slate-100);
+        display: flex;
+        align-items: center;
+        padding-inline: calc(var(--space-base) * 4);
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        &--before {
+            order: 0;
+            border-top-left-radius: var(--rounded-xs);
+            border-bottom-left-radius: var(--rounded-xs);
+        }
+
+        &--after {
+            border-top-right-radius: var(--rounded-xs);
+            border-bottom-right-radius: var(--rounded-xs);
+            order: 3;
+        }
+    }
+
+    &__overlay {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        border: 1px solid var(--color-slate-500);
+        border-radius: var(--rounded-xs);
+        transition-property: border-color;
+        transition-timing-function: ease;
+        transition-duration: 200ms;
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+    }
+
+    &__hint {
+        margin-block-start: calc(var(--space-base) * 4);
+        display: none;
+        color: var(--color-red);
+        font-size: var(--text-sm);
+        line-height: calc(var(--space-base) * 5);
+    }
+
+    &[aria-invalid="true"] &__adornment {
+        background-color: var(--color-red);
+        color: var(--color-white);
+    }
+
+    &[aria-invalid="true"] &__overlay {
+        border-color: var(--color-red);
+    }
+
+    &[aria-invalid="true"] &__hint {
+        display: block;
+    }
+
+    &__input:focus {
+        outline: 0;
+    }
+
+    &__input:focus + &__overlay {
+        border-color: var(--color-lime-700);
+        outline-offset: var(--focus-outline-offset);
+        outline-style: var(--focus-outline-style);
+        outline-width: var(--focus-outline-width);
+    }
+
+    &__input:focus ~ &__append,
+    &__input:focus ~ &__prepend {
+        background-color: var(--color-lime-700);
+    }
+
+    @media (hover: hover) {
+        &__input-wrapper:hover &__overlay {
+            border-color: var(--color-black-pearl);
+        }
+    }
+}

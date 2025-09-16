@@ -1,0 +1,19 @@
+@import "./base/fonts.css";
+@import "./base/variables.css";
+@import "./base/reset.css";
+
+@import "./component/radio-field.css";
+@import "./component/text-field.css";
+@import "./component/calculator.css";
+@import "./component/result.css";
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+    @media (--tablet) {
+        padding: calc(var(--space-base) * 10);
+    }
+}
